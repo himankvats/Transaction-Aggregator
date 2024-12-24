@@ -1,0 +1,60 @@
+.card-name-filter {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 0;
+    align-items: center;
+  }
+  
+  .card-name-filter label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 5px 10px;
+  }
+  
+  .card-name-filter .all {
+    flex-basis: 100%;
+    text-align: center;
+  }
+  
+  .card-name-filter .all input {
+    margin: 0; /* Remove extra margin */
+    padding: 0; /* Remove extra padding */
+    vertical-align: middle; /* Ensure vertical alignment */
+  }
+  
+  .card-name-filter .all span {
+    margin-left: 5px; /* Adjust spacing between checkbox and label */
+  }
+  
+  .card-name-filter label.all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card-name-filter .all {
+    flex-basis: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .card-name-filter .all label {
+    gap: 0;
+  }
+  
+  .card-name-filter input[type="checkbox"] {
+    width: auto; /* Remove default width */
+    height: auto; /* Remove default height */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+  }
+  
+  .card-name-filter label {
+    min-width: 20%;
+    white-space: nowrap;
+  }
+  

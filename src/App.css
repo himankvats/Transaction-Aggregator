@@ -1,38 +1,325 @@
 .App {
   text-align: center;
+  margin: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+label {
+  margin-right: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+select {
+  margin-bottom: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.transactions {
+  margin: 20px auto;
+  width: 80%;
+}
+
+.transaction-row {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.transaction-row.even {
+  background-color: #f2f2f2;
+}
+
+.transaction-row.odd {
+  background-color: #ffffff;
+}
+
+.transaction-row p {
+  margin: 5px 0;
+}
+
+.date-filter,
+.card-name-filter,
+.category-filter,
+.credit-debit-filter,
+.amount-filter {
+  margin-bottom: 20px;
+}
+
+.custom-date-inputs {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* New styles for filter panel */
+.filter-panel {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-panel .filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.filter-panel .filter-item {
+  flex: 1;
+  min-width: 200px;
+}
+
+.filter-panel label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.filter-panel input,
+.filter-panel select {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.filter-panel .clear-filters {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #d9534f;
   color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.filter-panel .clear-filters:hover {
+  background-color: #c9302c;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Vertical container for each filter */
+.filter-item:nth-child(1) {
+  background-color: #e6f7ff; /* Lighter color for date filter */
+}
+
+.filter-item:nth-child(2) {
+  background-color: #b3e0ff; /* Darker color for card name filter */
+}
+
+.filter-item:nth-child(3) {
+  background-color: #99d6ff; /* Corresponding color for category filter */
+}
+
+.filter-item:nth-child(4) {
+  background-color: #80ccff; /* Corresponding color for credit/debit filter */
+}
+
+.filter-item:nth-child(5) {
+  background-color: #66c2ff; /* Corresponding color for amount filter */
+}
+
+/* Floating filter panel */
+.sticky-filter {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #f9f9f9;
+  z-index: 1000;
+}
+
+/* Custom icons for filter labels */
+.filter-icon {
+  margin-right: 5px;
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Styles for the transaction summary */
+.transaction-summary {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 80%;
+  background-color: #e6f7ff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.transaction-summary-title {
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.transaction-summary-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.transaction-summary-key {
+  font-weight: bold;
+}
+
+.transaction-summary-value {
+  margin-left: 5px;
+}
+
+.transaction-summary-value.positive {
+  background-color: lightgreen;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.transaction-summary-value.negative {
+  background-color: lightcoral;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+/* Add these styles for sorting indicators */
+.transaction-date.sort-asc::after,
+.transaction-description.sort-asc::after,
+.transaction-card.sort-asc::after,
+.transaction-category.sort-asc::after,
+.transaction-credit-debit.sort-asc::after,
+.transaction-amount.sort-asc::after {
+  content: '▲';
+  margin-left: 5px;
+}
+
+.transaction-date.sort-desc::after,
+.transaction-description.sort-desc::after,
+.transaction-card.sort-desc::after,
+.transaction-category.sort-desc::after,
+.transaction-credit-debit.sort-desc::after,
+.transaction-amount.sort-desc::after {
+  content: '▼';
+  margin-left: 5px;
+}
+
+.transaction-date.sort-both::after,
+.transaction-description.sort-both::after,
+.transaction-card.sort-both::after,
+.transaction-category.sort-both::after,
+.transaction-credit-debit.sort-both::after,
+.transaction-amount.sort-both::after {
+  content: '⇅';
+  margin-left: 5px;
+}
+
+/* Existing styles */
+.transactions-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.transactions-table {
+  width: 100%;
+  max-width: 1200px;
+  border-collapse: collapse;
+}
+
+.transactions-header {
+  background-color: #2c3e50; /* Dark Blue background */
+  color: white; /* White text */
+  font-weight: bold;
+  font-size: 1.2em; /* Slightly larger font */
+  text-align: left;
+  padding: 10px 0;
+}
+
+.transactions-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc; /* Horizontal line */
+}
+
+.transactions-row.even {
+  background-color: #ecf0f1; /* Light grey */
+}
+
+.transactions-row.odd {
+  background-color: #ffffff; /* White */
+}
+
+.transaction-date,
+.transaction-description,
+.transaction-card,
+.transaction-category,
+.transaction-credit-debit,
+.transaction-amount {
+  flex: 1;
+  text-align: left;
+  padding: 0 10px;
+  border-right: 1px solid #ccc; /* Vertical line */
+}
+
+.transaction-date {
+  flex: 1;
+}
+
+.transaction-description {
+  flex: 3;
+}
+
+.transaction-card {
+  flex: 2;
+}
+
+.transaction-category {
+  flex: 2;
+}
+
+.transaction-credit-debit {
+  flex: 1;
+}
+
+.transaction-amount {
+  flex: 1;
+}
+
+.transactions-header .transaction-amount {
+  border-right: none; /* Remove vertical line for the last header cell */
+}
+
+.transactions-row .transaction-amount {
+  border-right: none; /* Remove vertical line for the last row cell */
 }

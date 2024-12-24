@@ -1,0 +1,110 @@
+.transaction-date.sort-asc::after,
+.transaction-description.sort-asc::after,
+.transaction-card.sort-asc::after,
+.transaction-category.sort-asc::after,
+.transaction-credit-debit.sort-asc::after,
+.transaction-amount.sort-asc::after {
+  content: '▲';
+  margin-left: 5px;
+}
+
+.transaction-date.sort-desc::after,
+.transaction-description.sort-desc::after,
+.transaction-card.sort-desc::after,
+.transaction-category.sort-desc::after,
+.transaction-credit-debit.sort-desc::after,
+.transaction-amount.sort-desc::after {
+  content: '▼';
+  margin-left: 5px;
+}
+
+.transaction-date.sort-both::after,
+.transaction-description.sort-both::after,
+.transaction-card.sort-both::after,
+.transaction-category.sort-both::after,
+.transaction-credit-debit.sort-both::after,
+.transaction-amount.sort-both::after {
+  content: '⇅';
+  margin-left: 5px;
+}
+
+.transactions-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.transactions-table {
+  width: 100%;
+  max-width: 1200px;
+  border-collapse: collapse;
+}
+
+.transactions-header {
+  background-color: #2c3e50;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: left;
+  padding: 10px 0;
+}
+
+.transactions-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.transactions-row.even {
+  background-color: #ecf0f1;
+}
+
+.transactions-row.odd {
+  background-color: #ffffff;
+}
+
+.transaction-date,
+.transaction-description,
+.transaction-card,
+.transaction-category,
+.transaction-credit-debit,
+.transaction-amount {
+  flex: 1;
+  text-align: left;
+  padding: 0 10px;
+  border-right: 1px solid #ccc;
+}
+
+.transaction-date {
+  flex: 1;
+}
+
+.transaction-description {
+  flex: 3;
+}
+
+.transaction-card {
+  flex: 2;
+}
+
+.transaction-category {
+  flex: 2;
+}
+
+.transaction-credit-debit {
+  flex: 1;
+}
+
+.transaction-amount {
+  flex: 1;
+}
+
+.transactions-header .transaction-amount {
+  border-right: none;
+}
+
+.transactions-row .transaction-amount {
+  border-right: none;
+}

@@ -1,0 +1,48 @@
+.amount-filter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .amount-filter-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .amount-filter-title::before {
+    content: "$";
+    font-size: 24px;
+  }
+  
+  .amount-filter label {
+    margin-bottom: 5px;
+  }
+  
+  .amount-filter input {
+    width: 120px; /* Increase the width of the input boxes */
+    padding-left: 20px; /* Space for the "$" symbol */
+    box-sizing: border-box;
+  }
+  
+  .amount-filter .input-container {
+    position: relative;
+    margin-bottom: 10px;
+  }
+  
+  .amount-filter .input-container input {
+    padding-left: 20px;
+  }
+  
+  .amount-filter .input-container .currency-symbol {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #888;
+  }
+  
